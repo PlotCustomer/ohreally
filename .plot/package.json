@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "github.com/gin-gonic/gin": "v1.12.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "go": "1.27.1"
+  },
+  "scripts": {},
+  "services": {}
+}
