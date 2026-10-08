@@ -1,0 +1,25 @@
+{
+  "dependencies": {
+    "github.com/gin-gonic/gin": "v1.12.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "go": "1.27.1"
+  },
+  "scripts": {},
+  "services": {
+    "content": {
+      "credentials": {
+        "url": "DATABASE_URL"
+      },
+      "database": "content",
+      "provider": "plot",
+      "sizing": {
+        "cpu": 1,
+        "disk_gb": 10,
+        "memory_mb": 1024
+      },
+      "type": "postgres"
+    }
+  }
+}
