@@ -1,0 +1,32 @@
+{
+  "name": "epileptic",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Epileptic application component - Communications Platform MVP (Setup work package)",
+  "license": "UNLICENSED",
+  "engines": {
+    "go": ">=1.25"
+  },
+  "scripts": {
+    "build": "go build ./...",
+    "run": "go run ./cmd/server",
+    "test": "go test ./...",
+    "lint": "go vet ./...",
+    "format": "gofmt -l -w ."
+  },
+  "services": [
+    {
+      "name": "epileptic-db",
+      "type": "postgres",
+      "provider": "local",
+      "credentials": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "epileptic",
+        "username": "epileptic",
+        "password": "epileptic",
+        "sslmode": "disable"
+      }
+    }
+  ]
+}
