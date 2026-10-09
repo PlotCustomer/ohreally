@@ -1,0 +1,9 @@
+.git
+.gitignore
+.plot
+.env
+bin
+*.out
+Dockerfile
+docker-compose.yml
+README.md

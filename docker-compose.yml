@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: epileptic
+      POSTGRES_PASSWORD: epileptic
+      POSTGRES_DB: epileptic
+    ports:
+      - "5432:5432"
+    volumes:
+      - epileptic-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U epileptic -d epileptic"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      EPILEPTIC_HTTP_ADDR: ":8080"
+      EPILEPTIC_DATABASE_URL: "postgres://epileptic:epileptic@db:5432/epileptic?sslmode=disable"
+      EPILEPTIC_ENV: "release"
+    ports:
+      - "8080:8080"
+
+volumes:
+  epileptic-db:

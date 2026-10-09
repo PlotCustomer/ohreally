@@ -1,0 +1,16 @@
+# Binaries
+/bin/
+/epileptic
+*.exe
+
+# Environment
+.env
+
+# Test / coverage output
+*.out
+coverage.txt
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
