@@ -1,0 +1,17 @@
+# Binaries
+/bin/
+*.exe
+*.out
+
+# Go
+/vendor/
+*.test
+coverage.out
+
+# Environment
+.env
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/

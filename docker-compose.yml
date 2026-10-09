@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: epileptic-postgres
+    environment:
+      POSTGRES_USER: epileptic
+      POSTGRES_PASSWORD: epileptic
+      POSTGRES_DB: epileptic
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U epileptic -d epileptic"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres-data:

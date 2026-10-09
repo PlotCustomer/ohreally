@@ -1,0 +1,32 @@
+{
+  "name": "epileptic",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Epileptic application component of the Communications Platform MVP",
+  "engines": {
+    "node": ">=22",
+    "go": ">=1.25"
+  },
+  "scripts": {
+    "build": "go build ./...",
+    "test": "go test ./...",
+    "lint": "go vet ./...",
+    "tidy": "go mod tidy",
+    "run": "go run ./cmd/server"
+  },
+  "services": [
+    {
+      "name": "postgres",
+      "type": "postgres",
+      "provider": "local",
+      "credentials": {
+        "host": "localhost",
+        "port": 5432,
+        "username": "epileptic",
+        "password": "epileptic",
+        "database": "epileptic",
+        "sslmode": "disable"
+      }
+    }
+  ]
+}
