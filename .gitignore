@@ -1,0 +1,7 @@
+# Build artefacts
+bin/
+*.exe
+
+# Plot
+.plot/agent-result.diff
+.plot/env

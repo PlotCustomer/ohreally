@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Webshop · DVBD.com</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">DVBD<span class="dot">.com</span></span>
+      <span class="service">Webshop</span>
+    </div>
+    <nav>
+      <a class="selection-link" href="/selectie">Selectie <span class="badge">{{.SelectionCount}}</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Welkom bij de Webshop</h1>
+      <p>Kies uit <strong>Fruit &amp; Groenten</strong> en <strong>Pasta</strong> — de producten van DVBD.com.</p>
+    </section>
+
+    {{range .CategoryGroups}}
+    <section class="category">
+      <h2>{{.Category}}</h2>
+      <div class="grid">
+        {{range .Products}}
+        <article class="card">
+          <h3>{{.Name}}</h3>
+          <p class="desc">{{.Description}}</p>
+          <p class="meta"><span class="price">{{.Price}}</span> <span class="unit">per {{.Unit}}</span></p>
+          <p class="stock">Voorraad: {{.Stock}}</p>
+          <form method="post" action="/selecteren">
+            <input type="hidden" name="productId" value="{{.ID}}">
+            <input type="hidden" name="quantity" value="1">
+            <button type="submit">Selecteer</button>
+          </form>
+        </article>
+        {{end}}
+      </div>
+    </section>
+    {{end}}
+  </main>
+
+  <footer>Webshop MVP · DVBD.com · Go/Echo</footer>
+</body>
+</html>

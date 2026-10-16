@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Selectie · Webshop · DVBD.com</title>
+  <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">DVBD<span class="dot">.com</span></span>
+      <span class="service">Webshop</span>
+    </div>
+    <nav>
+      <a class="selection-link" href="/selectie">Selectie <span class="badge">{{.Count}}</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Jouw selectie</h1>
+      <p>De producten die je als Klant hebt geselecteerd.</p>
+    </section>
+
+    {{if .Entries}}
+    <table class="selection">
+      <thead>
+        <tr><th>Product</th><th>Soort</th><th>Aantal</th><th>Prijs</th><th>Subtotaal</th><th></th></tr>
+      </thead>
+      <tbody>
+        {{range .Entries}}
+        <tr>
+          <td>{{.Product.Name}}</td>
+          <td>{{.Product.Category}}</td>
+          <td>{{.Quantity}}</td>
+          <td>{{.UnitPrice}}</td>
+          <td>{{.Subtotal}}</td>
+          <td>
+            <form method="post" action="/selectie/verwijderen">
+              <input type="hidden" name="productId" value="{{.Product.ID}}">
+              <button type="submit" class="ghost">Verwijder</button>
+            </form>
+          </td>
+        </tr>
+        {{end}}
+      </tbody>
+      <tfoot>
+        <tr><th colspan="4">Totaal</th><th>{{.Total}}</th><th></th></tr>
+      </tfoot>
+    </table>
+    {{else}}
+    <p class="empty">Je hebt nog geen producten geselecteerd.</p>
+    {{end}}
+
+    <p><a class="back" href="/">Terug naar de webshop</a></p>
+  </main>
+
+  <footer>Webshop MVP · DVBD.com · Go/Echo</footer>
+</body>
+</html>
