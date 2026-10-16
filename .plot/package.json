@@ -1,0 +1,36 @@
+{
+  "name": "dvbd-webshop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DVBD.com Webshop - Webshop Setup for the Webshop MVP plateau",
+  "engines": {
+    "go": ">=1.25"
+  },
+  "toolchain": {
+    "go": "1.27.2"
+  },
+  "scripts": {
+    "start": "cd \"$(git rev-parse --show-toplevel)\" && go run ./cmd/dvbd",
+    "build": "go build -o bin/dvbd ./cmd/dvbd",
+    "test": "go test ./...",
+    "tidy": "go mod tidy",
+    "fmt": "gofmt -w ."
+  },
+  "services": [
+    {
+      "name": "postgres",
+      "type": "postgres",
+      "provider": "local",
+      "credentials": {
+        "host": "localhost",
+        "port": 5432,
+        "database": "webshop",
+        "username": "webshop",
+        "password": "webshop"
+      }
+    }
+  ],
+  "preview": {
+    "port": 8080
+  }
+}
